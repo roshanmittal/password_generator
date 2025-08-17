@@ -14,14 +14,17 @@ const symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 
 let password = "";
 let passwordLength = 10;
-let checkCount = 0;
+let checkCount = 1;
 
 
 function handleSlider(){
     inputSlider.value = passwordLength;
-    console.log('dn');
     lengthDisplay.innerText = passwordLength;
-    console.log('dn2');
+
+    const min = inputSlider.min;
+    const max = inputSlider.max;
+    inputSlider.style.backgroundSize =
+    ((passwordLength - min) * 100 / (max - min)) + "% 100%";
 }
 
 function setIndicator(color) {
@@ -178,3 +181,5 @@ generateBtn.addEventListener('click', () => {
     
     calcStrength();
 });
+
+handleSlider();
